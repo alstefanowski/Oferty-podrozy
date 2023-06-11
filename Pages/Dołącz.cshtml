@@ -1,0 +1,28 @@
+﻿@page
+@model Projekt.Pages.DołączModel
+
+@{
+    ViewData["Title"] = "Dołącz";
+}
+
+<h1>Dołącz</h1>
+
+<h4>LoggedUserModel</h4>
+<hr />
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Czy chcesz dołączyć?:
+            <input type="text" name="enterTrip" value="@Model.Enter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+        </p>
+    </div>
+</form>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

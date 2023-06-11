@@ -1,0 +1,85 @@
+﻿@page
+@model Projekt.Pages.IndexModel
+
+@{
+    ViewData["Title"] = "Oferty podróży";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Szukaj po mieście:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                 <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.TripModel[0].Destination)
+                 </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NumberOfPeopleSort"> 
+                    @Html.DisplayNameFor(model => model.TripModel[0].Number_of_people)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CostSort">
+                    @Html.DisplayNameFor(model => model.TripModel[0].Cost)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripModel[0].Smoking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripModel[0].Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripModel[0].Expected_arrival)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.TripModel)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number_of_people)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Smoking)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expected_arrival)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-page="./Dołącz" asp-route-id="@item.Id">Dołącz</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
