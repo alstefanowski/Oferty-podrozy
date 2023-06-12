@@ -5,18 +5,14 @@
     ViewData["Title"] = "Oferty podróży";
 }
 
-<h1>Index</h1>
+<h1>Oferty podróży</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
             Szukaj po mieście:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
             <input type="submit" value="Search" class="btn btn-primary" /> |
-            <a asp-page="./Index">Back to full List</a>
         </p>
     </div>
 </form>
@@ -48,6 +44,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.TripModel[0].Expected_arrival)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TripModel[0].Status)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -74,10 +73,13 @@
                     @Html.DisplayFor(modelItem => item.Expected_arrival)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
-                    <a asp-page="./Dołącz" asp-route-id="@item.Id">Dołącz</a>
+                    <a asp-page="./Dołącz" asp-route-id="@item.Id">Dołącz</a> |
                 </td>
             </tr>
         }

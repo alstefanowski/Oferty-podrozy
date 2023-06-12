@@ -12,12 +12,13 @@ namespace Projekt.Models
         public int Number_of_people { get; set; }
         public bool Smoking { get; set; }
         public ContactStatus Status { get; set; }
-        public List<BusModel> Buses { get; set; }
+
+        //public List<BusModel> Buses { get; set; }
     }
     
     public enum ContactStatus
     {
-        Zapisany,
-        Niezapisany
+        Dostępna,
+        Niedostępna
     }
 }

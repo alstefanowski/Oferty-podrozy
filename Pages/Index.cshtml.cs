@@ -39,7 +39,9 @@ namespace Projekt.Pages
             CostSort = sortOrder == "Cost" ? "cost_desc" : "Cost";
             CurrentFilter = searchString;
 
-            IQueryable<TripModel> tripsQ = from s in _context.TripModel select s;
+            IQueryable<TripModel> tripsQ = from s 
+                                           in _context.TripModel 
+                                           select s;
             if(!String.IsNullOrEmpty(searchString) )
             {
                 tripsQ = tripsQ.Where(s => s.Destination.Contains(searchString));

@@ -14,5 +14,6 @@ namespace Projekt.Data
         public DbSet<Projekt.Models.TripModel>? TripModel { get; set; }
         public DbSet<DriverModel>? Drivers { get; set; }
         public DbSet<LoggedUserModel>? Offers { get; set; }
+        //public DbSet<GroupModel> Groups { get; set; } 
     }
 }

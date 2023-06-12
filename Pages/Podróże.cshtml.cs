@@ -26,27 +26,33 @@ namespace Projekt.Pages
         {
             Trips = _context.TripModel.ToList();
         }
-
         [BindProperty]
         public TripModel TripModel { get; set; } = default!;
+        
         public IActionResult OnPost()
         {
-            if(!ModelState.IsValid)
-            {
-                return Page();
-            }
             _context.TripModel.Add(TripModel);
             _context.SaveChanges();
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState.Select(x => x.Value.Errors)
+                                       .Where(y => y.Count > 0)
+                                       .ToList();
+                foreach (var error in errors)
+                {
+
+                }
+                return Page();
+            }
             return RedirectToPage("./Index");
-
+        
         }
-
-        /*
-        public async Task<IActionResult> OnPostAsync()
+        
+        /*public async Task<IActionResult> OnPostAsync()
         {
           if (!ModelState.IsValid || _context.TripModel == null || TripModel == null)
             {
-                return Page();
+                return RedirectToPage("./Index");
             }
 
             _context.TripModel.Add(TripModel);
