@@ -14,6 +14,11 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="TripModel.Starting_place" class="control-label"></label>
+                <input asp-for="TripModel.Starting_place" class="form-control" />
+                <span asp-validation-for="TripModel.Starting_place" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="TripModel.Destination" class="control-label"></label>
                 <input asp-for="TripModel.Destination" class="form-control" />
                 <span asp-validation-for="TripModel.Destination" class="text-danger"></span>

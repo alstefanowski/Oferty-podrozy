@@ -11,7 +11,7 @@ using Projekt.Models;
 
 namespace Projekt.Pages
 {
-    //[Authorize(Roles ="Driver")]
+    [Authorize]
     public class PodróżeModel : PageModel
     {
         private readonly Projekt.Data.ApplicationDbContext _context;
@@ -33,7 +33,7 @@ namespace Projekt.Pages
         {
             _context.TripModel.Add(TripModel);
             _context.SaveChanges();
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid )
             {
                 var errors = ModelState.Select(x => x.Value.Errors)
                                        .Where(y => y.Count > 0)

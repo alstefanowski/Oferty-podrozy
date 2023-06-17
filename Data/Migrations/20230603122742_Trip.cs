@@ -18,6 +18,14 @@ namespace Projekt.Data.Migrations
                 newName: "Smoking");
 
             migrationBuilder.AlterColumn<string>(
+               name: "Starting_place",
+               table: "TripModel",
+               type: "nvarchar(max)",
+               nullable: true,
+               oldClrType: typeof(string),
+               oldType: "nvarchar(max)");
+
+            migrationBuilder.AlterColumn<string>(
                 name: "Destination",
                 table: "TripModel",
                 type: "nvarchar(max)",
@@ -65,6 +73,16 @@ namespace Projekt.Data.Migrations
                 name: "Smoking",
                 table: "TripModel",
                 newName: "smoking");
+
+            migrationBuilder.AlterColumn<string>(
+                name: "Starting_place",
+                table: "TripModel",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "",
+                oldClrType: typeof(string),
+                oldType: "nvarchar(max)",
+                oldNullable: true);
 
             migrationBuilder.AlterColumn<string>(
                 name: "Destination",

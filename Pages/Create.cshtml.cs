@@ -31,7 +31,7 @@ namespace Projekt.Pages
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.TripModel == null || TripModel == null)
+          if (!ModelState.IsValid || _context.TripModel == null || TripModel == null)  
             {
                 return Page();
             }

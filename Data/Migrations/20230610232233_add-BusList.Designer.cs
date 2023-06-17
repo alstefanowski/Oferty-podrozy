@@ -293,6 +293,9 @@ namespace Projekt.Data.Migrations
                     b.Property<DateTime>("Departure")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Starting_place")
+                      .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Destination")
                         .HasColumnType("nvarchar(max)");
 

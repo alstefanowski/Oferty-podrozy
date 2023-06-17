@@ -21,6 +21,8 @@ namespace Projekt.Pages
         }
         public string NameSort { get; set; }
         public string DestinationSort { get; set; }
+        public string NSort { get; set; }
+        public string Starting_placeSort { get; set; }
         public string NumberOfPeopleSort { get; set; }
         public string CostSort { get; set; }
         public string IsSmokingSort { get; set; }
@@ -33,6 +35,8 @@ namespace Projekt.Pages
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
             NameSort = String.IsNullOrEmpty(sortOrder) ? "destination_desc" : "";
+            NSort = String.IsNullOrEmpty(sortOrder) || sortOrder == "starting" ? "starting_place_desc" : "starting";
+            //Starting_placeSort = sortOrder == starting" ? "starting_place_desc" : "starting";
             //DestinationSort = sortOrder == "Destination" ? "destination_desc" : "Destination";
             NumberOfPeopleSort = sortOrder == "People" ? "people_desc" : "People";
             //IsSmokingSort = sortOrder == "Smoking" ? "smoking_desc" : "smoking";
@@ -48,6 +52,9 @@ namespace Projekt.Pages
             }
             switch(sortOrder)
             {
+                case "starting":
+                    tripsQ = tripsQ.OrderByDescending(s => s.Starting_place);
+                    break;
                 case "destination_desc":
                     tripsQ = tripsQ.OrderByDescending(s => s.Destination);
                     break;
@@ -70,6 +77,9 @@ namespace Projekt.Pages
                     break;
                 case "Cost":
                     tripsQ = tripsQ.OrderBy(s => s.Cost);
+                    break;
+                case "starting_place_desc":
+                    tripsQ=tripsQ.OrderBy(s => s.Starting_place);
                     break;
                 default:
                     tripsQ = tripsQ.OrderBy(s => s.Destination);

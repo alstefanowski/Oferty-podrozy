@@ -10,9 +10,9 @@
 <form asp-page="./Index" method="get">
     <div class="form-actions no-color">
         <p>
-            Szukaj po mieście:
+            Szukaj po mieście docelowym:
             <input type="text" name="SearchString" value="@Model.CurrentFilter" />
-            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <input type="submit" value="Search" class="btn btn-primary" /> 
         </p>
     </div>
 </form>
@@ -20,6 +20,11 @@
 <table class="table">
     <thead>
         <tr>
+            <th>
+                 <a asp-page="./Index" asp-route-sortOrder="@Model.NSort">
+                    @Html.DisplayNameFor(model => model.TripModel[0].Starting_place)
+                 </a>
+            </th>
             <th>
                  <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
                     @Html.DisplayNameFor(model => model.TripModel[0].Destination)
@@ -54,6 +59,9 @@
         @foreach (var item in Model.TripModel)
         {
             <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Starting_place)
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Destination)
                 </td>

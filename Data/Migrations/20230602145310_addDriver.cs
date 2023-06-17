@@ -14,6 +14,7 @@ namespace Projekt.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Starting_place = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Destination = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Number_of_people = table.Column<int>(type: "int", nullable: false),
                     smoking = table.Column<bool>(type: "bit", nullable: false)
