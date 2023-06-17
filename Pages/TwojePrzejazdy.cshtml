@@ -4,7 +4,7 @@
     ViewData["Title"] = "Twoje przejazdy";
 }
 
-<h1>Twoje przejazdy</h1>
+<h1>Zaplanowane przejazdy</h1>
 
 <table class="table">
     <thead>
@@ -43,7 +43,7 @@
                     @Html.DisplayFor(modelItem => item.Expected_arrival)
                 </td>
                 <td>
-                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> 
                 </td>
             </tr>
         }
