@@ -14,7 +14,7 @@ using Projekt.Models;
 
 namespace Projekt.Pages
 {
-    [Authorize]
+    [Authorize(Roles = "User")]
     public class DołączModel : PageModel
     {
         private readonly Projekt.Data.ApplicationDbContext _context;
@@ -31,7 +31,7 @@ namespace Projekt.Pages
         public TripModel Trip { get; set; }
 
         public UsersTrip usersTrip { get; set; } = default;
-        
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
