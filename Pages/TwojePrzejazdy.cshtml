@@ -1,0 +1,52 @@
+﻿@page
+@model Projekt.Pages.TwojePrzejazdyModel
+@{
+    ViewData["Title"] = "Twoje przejazdy";
+}
+
+<h1>Twoje przejazdy</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                    @Html.DisplayNameFor(model => model.UsersTrip[0].Starting_place)
+                 </a>
+            </th>
+            <th>
+                    @Html.DisplayNameFor(model => model.UsersTrip[0].Destination)
+                 </a>
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.UsersTrip[0].Departure)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UsersTrip[0].Expected_arrival)
+            </th>
+        </tr>
+    </thead>
+      <tbody>
+        @foreach (var item in Model.UsersTrip)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Starting_place)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Destination)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Departure)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Expected_arrival)
+                </td>
+                <td>
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

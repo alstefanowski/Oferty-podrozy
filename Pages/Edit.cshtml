@@ -15,6 +15,11 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="TripModel.Id" />
             <div class="form-group">
+                <label asp-for="TripModel.Starting_place" class="control-label"></label>
+                <input asp-for="TripModel.Starting_place" class="form-control" />
+                <span asp-validation-for="TripModel.Destination" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="TripModel.Destination" class="control-label"></label>
                 <input asp-for="TripModel.Destination" class="form-control" />
                 <span asp-validation-for="TripModel.Destination" class="text-danger"></span>
@@ -23,6 +28,16 @@
                 <label asp-for="TripModel.Number_of_people" class="control-label"></label>
                 <input asp-for="TripModel.Number_of_people" class="form-control" />
                 <span asp-validation-for="TripModel.Number_of_people" class="text-danger"></span>
+            </div>
+             <div class="form-group">
+                <label asp-for="TripModel.Departure" class="control-label"></label>
+                <input asp-for="TripModel.Departure" class="form-control" />
+                <span asp-validation-for="TripModel.Departure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TripModel.Expected_arrival" class="control-label"></label>
+                <input asp-for="TripModel.Expected_arrival" class="form-control" />
+                <span asp-validation-for="TripModel.Expected_arrival" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
