@@ -1,10 +1,9 @@
 ﻿@page
-@model Projekt.Pages.AnulujModel
+@model Projekt.Pages.AnulowanieModel
 @{
-    ViewData["Title"] = "Anuluj";
+    ViewData["Title"] = "Anulowanie";
 }
-
-<h1>Anuluj</h1>
+<h1>Anulowanie</h1>
 
 <h3>Czy na pewno chcesz anulowac przejazd?</h3>
 <div>
@@ -35,11 +34,11 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.UsersTrip.Expected_arrival)
         </dd>
-    </dl>
-    
-    <form  method="post">
+    </dl>  
+    <form method="post">
         <input type="hidden" asp-for="UsersTrip.Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <input type="submit" value="Anuluj" class="btn btn-danger" /> |
         <a asp-page="./TwojePrzejazdy">Back to List</a>
     </form>
+
 </div>

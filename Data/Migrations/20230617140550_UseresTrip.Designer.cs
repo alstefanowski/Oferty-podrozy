@@ -324,7 +324,7 @@ namespace Projekt.Data.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("tID")
+                    b.Property<int>("Trip")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

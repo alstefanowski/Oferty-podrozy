@@ -16,7 +16,7 @@ namespace Projekt.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    tID = table.Column<int>(type: "int", nullable: true),
+                    Trip = table.Column<int>(type: "int", nullable: true),
                     Destination = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Starting_place = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Departure = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -31,7 +31,7 @@ namespace Projekt.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "tID",
+                name: "Trip",
                 table: "UsersTrip");
 
             migrationBuilder.AddColumn<DateTime>(

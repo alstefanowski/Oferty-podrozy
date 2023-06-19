@@ -25,6 +25,7 @@ namespace Projekt.Pages
         }
         public IList<LoggedUserModel> Offers { get; set; }
         public string Enter { get; set; }
+        public string ErrorMessage { get; set; }
 
         [BindProperty]
         public LoggedUserModel LoggedUser { get; set; } = default!;
@@ -48,7 +49,9 @@ namespace Projekt.Pages
             }
             if(trip.Number_of_people <= 0)
             {
-                return BadRequest("Brak wolnych miejsc na wybraną wycieczkę");
+                TempData["ErrorMessage"] = "Nie mozesz dołączyć do podróży, ponieważ ie ma już wolnych miejsc";
+                
+                return RedirectToPage("./Index"); 
             }
             if (!(userstrip == null))
             {
@@ -56,7 +59,9 @@ namespace Projekt.Pages
                 {
                     if ((user.Departure.CompareTo(trip.Departure) >= 0 && user.Departure.CompareTo(trip.Expected_arrival) <= 0) || (user.Expected_arrival.CompareTo(trip.Departure) >= 0 && user.Expected_arrival.CompareTo(trip.Expected_arrival) <= 0))
                     {
-                        return BadRequest("Masz juz zaplanowana podróz na ten termin");
+                        TempData["ErrorMessage"] = "Nie mozesz dołączyć do podróży, ponieważ masz już zaplanowaną podróż na ten termin";
+
+                        return RedirectToPage("./Index");
                     }
                 }
             }
@@ -69,7 +74,7 @@ namespace Projekt.Pages
             var usersTrip = new UsersTrip
             {
                 UserId = f_user,
-                //tID = trip.Id,
+                Trip = trip.Id,
                 Starting_place = trip.Starting_place,
                 Destination = trip.Destination,
                 Departure = trip.Departure,
