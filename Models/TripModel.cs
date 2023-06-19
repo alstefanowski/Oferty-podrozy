@@ -5,6 +5,7 @@ namespace Projekt.Models
     public class TripModel
     {
         public int Id { get; set; }
+        [Range(1, int.MaxValue, ErrorMessage = "Cost must be grater than 0")]
         public int Cost { get; set; }
         public DateTime Departure { get; set; }
 
@@ -17,6 +18,7 @@ namespace Projekt.Models
         public string? Starting_place { get; set; }
 
         [Display(Name = "Number of people")]
+        [Range(1, int.MaxValue, ErrorMessage = "Number of people must be grater than 0")]
         public int Number_of_people { get; set; }
         public bool Smoking { get; set; }
         public ContactStatus Status { get; set; }
