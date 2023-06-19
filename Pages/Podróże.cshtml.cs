@@ -34,7 +34,7 @@ namespace Projekt.Pages
             DriverModel Driver = new DriverModel();
             Driver.UserName = User.FindFirstValue(ClaimTypes.Name);
             Driver.DriverId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            Driver.Description = TripModel.Departure + " - " + TripModel.Destination;
+            Driver.Description = TripModel.Starting_place + " - " + TripModel.Destination + ": " + TripModel.Departure + " - " + TripModel.Expected_arrival;
             _context.TripModel.Add(TripModel);
             _context.Drivers.Add(Driver);
             _context.SaveChanges();
