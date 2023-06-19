@@ -1,0 +1,26 @@
+﻿@model Projekt.ViewModel.CommentVm
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+
+<table style="width: 100%; border: 1px solid black">
+    <div class="the-icons">
+    <tr>
+            @Model.CreateOn.ToString("dd-MMM-yyyy");
+    </tr>
+    <tr>
+            @Model.Description
+    </tr>
+    <tr>
+            @Model.Rating
+        <td>
+                @for (int i = 0; i < Model.Rating; i++)
+                {
+                <span class="glyphicon glyphicon-star"></span>
+                }
+                @for (int i = Model.Rating; i < 5; i++)
+                {
+                <span class="glyphicon glyphicon-star-empty"></span>
+                }
+        </td>
+    </tr>
+    </div>
+</table>

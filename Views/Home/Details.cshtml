@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Projekt.ViewModel.CommentVm>
+
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
+@{
+    ViewBag.Title = "Details";
+}
+<script type="text/javascript">
+    function CRateOut(rating) { 
+        for (var i = 1; i <= rating; i++) {
+            $("#span" + i).attr('class', 'glyphicon glyphicon-star-empty');
+        }
+    }
+    function CRateOver(rating) {
+        for (var i = 1; i <= rating; i++) {
+            $("#span" + i).attr('class', 'glyphicon glyphicon-star');
+        }
+    }
+    function CRateClick(rating) {
+        $("#1blRating").val(rating);
+        for (var i = 1; i <= rating; i++) {
+            $("#span" + i).attr('class', 'glyphicon glyphicon-star');
+        }
+
+        for (var i = rating + 1; i <= 5; i++) {
+            $("#span" + i).attr('class', 'glyphicon glyphicon-star-empty');
+        }
+    }
+    function CRateSelected() {
+        var rating = $("#1blRating").val();
+        for (var i = ; i <= rating; i++) {
+            $("#span" + i).attr('class', 'glyphicon glyphicon-star'); 
+        }
+    }
+    function VerifyRating() {
+        var rating = $("#1blRating").val();
+        if (rating == 0) {
+            alert("Please select rating.");
+            return false;
+        }
+    }
+</script>
+
+<h2>Pokaz komentarz</h2>
+@foreach (var item in Model)
+{
+    <partial>
+        @Html.Partial("CommentPartial", item)
+    </partial>
+}
+<body>
+<h3>Dodaj Komentarz</h3>
+
+@using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new{onsubmit = "return VerifyRating()"}))
+{
+    <textarea rows="6", cols="50" name="Description" id="txtDescription"></textarea>
+    <div onmouseout="CRateSelected()">
+            <span id="span1" onmousedown="CRateOut(1)" onmouseover="CRateOver(1)" onclick="CRateClick(1)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
+            <span id="span2" onmousedown="CRateOut(2)" onmouseover="CRateOver(2)" onclick="CRateClick(2)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
+            <span id="span3" onmousedown="CRateOut(3)" onmouseover="CRateOver(3)" onclick="CRateClick(3)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
+            <span id="span4" onmousedown="CRateOut(4)" onmouseover="CRateOver(4)" onclick="CRateClick(4)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
+            <span id="span5" onmousedown="CRateOut(5)" onmouseover="CRateOver(5)" onclick="CRateClick(5)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
+    </div>
+    <div>
+        <input type="hidden" name="rating" id ="1blRating" value="0"/>
+    </div>
+    <div>
+        <input type="hidden" name="driverId" id="1blRating" value="@ViewBag.Id" />
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary active" name="Zapisz komentarz" value="Zapisz Komentarz"/>
+    </div>
+}
+</body>

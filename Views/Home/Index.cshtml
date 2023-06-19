@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Projekt.ViewModel.DriversVm>
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <link href="stylesheet" rel="bootstrap.min.css">
+</head>
+
+<h2>Index</h2>
+<table style="width: 100%; border: 1px solid black">
+    <thead>
+        <tr>
+            <th>
+                Driver Id
+            </th>
+            <th>
+                Driver Title
+            </th>
+            <th>
+                Driver Description
+            </th>
+            <th>
+                Submit
+            </th>
+        </tr>
+    </thead>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.Id
+            </td>
+            <td>
+                @item.UserName
+            </td>
+            <td>
+                @item.Description
+            </td>
+            <td>
+                @Html.ActionLink("Dodaj/przeczytaj komentarz", "Details", new {Id = item.Id})
+            </td>
+        </tr>
+    }
+</table>
+
+

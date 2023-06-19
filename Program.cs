@@ -65,6 +65,8 @@ using(var scope = app.Services.CreateScope()) //Tworzenie ról
     }
     
 }
-
+app.MapControllerRoute(
+name: "default",
+pattern: "{controller}/{action=Index}/{id?}");
 
 app.Run();
