@@ -5,6 +5,7 @@ namespace Projekt.Models
     {
         public int Id { get; set; }
         public string? UserId { get; set; }
+        //public int? tID { get; set; }
         public string? Destination { get; set; }
         [Display(Name = "Starting place ")]
         public string? Starting_place { get; set; }

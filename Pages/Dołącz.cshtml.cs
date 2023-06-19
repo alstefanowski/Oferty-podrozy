@@ -69,6 +69,7 @@ namespace Projekt.Pages
             var usersTrip = new UsersTrip
             {
                 UserId = f_user,
+                //tID = trip.Id,
                 Starting_place = trip.Starting_place,
                 Destination = trip.Destination,
                 Departure = trip.Departure,
