@@ -13,6 +13,7 @@ namespace Projekt.Controllers
         {
             _context = context;
         }
+        
         public IActionResult Index()
         {
 
@@ -28,20 +29,20 @@ namespace Projekt.Controllers
                                                            ).ToList();
             return View(listOfSection);   
         }
-        public IActionResult Details(int driverId)
+        public IActionResult Details(int Id)
         {
             IEnumerable<CommentVm> listOfComment = (from objComment in _context.Comments
-                                                    where objComment.Id == driverId
+                                                    where objComment.DriverId == Id
                                                     select new CommentVm()
                                                     {
                                                         Id = objComment.Id,
                                                         Description = objComment.Description,
                                                         Rating = objComment.Rating,
-                                                        DriverId = objComment.DriverId,
+                                                        DriverId = objComment.Id,
                                                         CreateOn = objComment.CreateOn,
                                                     }
                                                     ).ToList();
-            ViewBag.DriverId = driverId;
+            ViewBag.DriverId = Id;
             return View(listOfComment);
         }
         

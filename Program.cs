@@ -51,11 +51,15 @@ app.UseAuthorization();
 
 app.MapRazorPages();
 
+/*
+ *Tworzenie ról, jak wyskakuje tutaj b³¹d to musisz zakomentowaæ ca³y using(var scope... i jak ju¿ uruchomisz i stworza
+ *sie tabele aspnetroles itd., to mozesz to odkomentowac aby stworzyc role przy rejestracji
+ */
+using (var scope = app.Services.CreateScope())
 
-using(var scope = app.Services.CreateScope()) //Tworzenie ról
 {
     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-    var roles = new[] { "Driver", "Passenger", "User" };
+    var roles = new[] { "Driver", "User" };
     foreach(var role in roles)
     {
         if (!await roleManager.RoleExistsAsync(role))
@@ -65,6 +69,7 @@ using(var scope = app.Services.CreateScope()) //Tworzenie ról
     }
     
 }
+
 app.MapControllerRoute(
 name: "default",
 pattern: "{controller}/{action=Index}/{id?}");

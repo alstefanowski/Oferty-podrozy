@@ -84,11 +84,14 @@
                     @Html.DisplayFor(modelItem => item.Status)
                 </td>
                 <td>
-                    <a asp-page="./Kierowca" asp-route-id ="@item.Id">Kierowca</a>
+
                     <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                     <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a> |
-                    <a asp-page="./Dołącz" asp-route-id="@item.Id">Dołącz</a> |
+                    @if(User.IsInRole("User"))
+                    {
+                        <a asp-page="./Dołącz" asp-route-id="@item.Id">Dołącz</a>
+                    }
                 </td>
             </tr>
         }

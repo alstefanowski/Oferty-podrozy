@@ -53,18 +53,22 @@
 @using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new{onsubmit = "return VerifyRating()"}))
 {
     <textarea rows="6", cols="50" name="Description" id="txtDescription"></textarea>
-    <div onmouseout="CRateSelected()">
-            <span id="span1" onmousedown="CRateOut(1)" onmouseover="CRateOver(1)" onclick="CRateClick(1)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
-            <span id="span2" onmousedown="CRateOut(2)" onmouseover="CRateOver(2)" onclick="CRateClick(2)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
-            <span id="span3" onmousedown="CRateOut(3)" onmouseover="CRateOver(3)" onclick="CRateClick(3)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
-            <span id="span4" onmousedown="CRateOut(4)" onmouseover="CRateOver(4)" onclick="CRateClick(4)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
-            <span id="span5" onmousedown="CRateOut(5)" onmouseover="CRateOver(5)" onclick="CRateClick(5)" style="width: 30px;height: 30px;" class="glyphicon glyphicon-star-empty"></span>
+
+    <div>
+        <label for="rating">
+                Wybierz ocene kierowcy:
+        </label>
+
+        <select name="rating" id ="driverId">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+        </select>
     </div>
     <div>
-        <input type="hidden" name="rating" id ="1blRating" value="0"/>
-    </div>
-    <div>
-        <input type="hidden" name="driverId" id="1blRating" value="@ViewBag.Id" />
+        <input type="hidden" name="driverId" id="1blRating" value="@ViewBag.DriverId" />
     </div>
     <div>
         <input type="submit" class="btn btn-primary active" name="Zapisz komentarz" value="Zapisz Komentarz"/>

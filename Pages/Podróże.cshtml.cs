@@ -24,25 +24,19 @@ namespace Projekt.Pages
         }
         [BindProperty]
         public TripModel TripModel { get; set; } = default!;
-
+        public DriverModel Driver { get; set; } = default!;
         public IActionResult OnPost()
         { 
-
             if (!ModelState.IsValid )
             {
-                /*
-                var errors = ModelState.Select(x => x.Value.Errors)
-                                       .Where(y => y.Count > 0)
-                                       .ToList();
-                foreach (var error in errors)
-                {
-
-                }
-                */
-                //return BadRequest("ModelState w podrozach");
                 return Page();
             }
+            DriverModel Driver = new DriverModel();
+            Driver.UserName = User.FindFirstValue(ClaimTypes.Name);
+            Driver.DriverId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            Driver.Description = TripModel.Departure + " - " + TripModel.Destination;
             _context.TripModel.Add(TripModel);
+            _context.Drivers.Add(Driver);
             _context.SaveChanges();
             return RedirectToPage("./Index");
         
