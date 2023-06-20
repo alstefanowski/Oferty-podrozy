@@ -13,7 +13,6 @@ namespace Projekt.Data
         public DbSet<Projekt.Models.TripModel>? TripModel { get; set; }
         public DbSet<Projekt.Models.UsersTrip>? UsersTrip { get; set; }
         public DbSet<DriverModel>? Drivers { get; set; }
-        public DbSet<LoggedUserModel>? Offers { get; set; }
         public DbSet<CommentModel> Comments { get; set; }
     }
 }

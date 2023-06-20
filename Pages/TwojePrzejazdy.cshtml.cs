@@ -25,10 +25,6 @@ namespace Projekt.Pages
         }
         public IList<UsersTrip> UsersTrip { get; set; } = default!;
 
-        [BindProperty]
-        public LoggedUserModel LoggedUser { get; set; } = default!;
-
-
         public async Task<IActionResult> OnGetAsync()
         {
             string f_user = User.FindFirstValue(ClaimTypes.NameIdentifier);

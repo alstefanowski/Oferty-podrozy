@@ -23,12 +23,10 @@ namespace Projekt.Pages
         {
             _context = context;
         }
-        public IList<LoggedUserModel> Offers { get; set; }
         public string Enter { get; set; }
         public string ErrorMessage { get; set; }
 
         [BindProperty]
-        public LoggedUserModel LoggedUser { get; set; } = default!;
         public TripModel Trip { get; set; }
 
         public UsersTrip usersTrip { get; set; } = default;
@@ -49,7 +47,7 @@ namespace Projekt.Pages
             }
             if(trip.Number_of_people <= 0)
             {
-                TempData["ErrorMessage"] = "Nie mozesz dołączyć do podróży, ponieważ ie ma już wolnych miejsc";
+                TempData["ErrorMessage"] = "Nie możesz dołączyć do podróży, ponieważ nie ma już wolnych miejsc";
                 
                 return RedirectToPage("./Index"); 
             }

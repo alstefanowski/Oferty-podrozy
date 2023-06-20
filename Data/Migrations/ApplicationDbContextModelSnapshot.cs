@@ -247,7 +247,7 @@ namespace Projekt.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Comments", (string)null);
                 });
 
             modelBuilder.Entity("Projekt.Models.DriverModel", b =>
@@ -259,17 +259,16 @@ namespace Projekt.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DriverId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Drivers");
+                    b.ToTable("Drivers", (string)null);
                 });
 
             modelBuilder.Entity("Projekt.Models.LoggedUserModel", b =>
@@ -291,7 +290,29 @@ namespace Projekt.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Offers");
+                    b.ToTable("Offers", (string)null);
+                });
+
+            modelBuilder.Entity("Projekt.Models.RatingModel", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("Bezpieczeństwo_jazdy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Kultura_jazdy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Punktualność")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Ratings", (string)null);
                 });
 
             modelBuilder.Entity("Projekt.Models.TripModel", b =>
@@ -328,7 +349,7 @@ namespace Projekt.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TripModel");
+                    b.ToTable("TripModel", (string)null);
                 });
 
             modelBuilder.Entity("Projekt.Models.UsersTrip", b =>
@@ -353,12 +374,10 @@ namespace Projekt.Data.Migrations
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(max)");
-                    b.Property<int>("Trip")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("UsersTrip");
+                    b.ToTable("UsersTrip", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

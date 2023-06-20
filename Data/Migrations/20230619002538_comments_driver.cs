@@ -9,10 +9,6 @@ namespace Projekt.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropColumn(
-                name: "DriverId",
-                table: "Drivers");
-
             migrationBuilder.AlterColumn<string>(
                 name: "UserName",
                 table: "Drivers",
@@ -45,30 +41,12 @@ namespace Projekt.Data.Migrations
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                 });
-
-            migrationBuilder.CreateTable(
-                name: "Ratings",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Bezpieczeństwo_jazdy = table.Column<int>(type: "int", nullable: false),
-                    Kultura_jazdy = table.Column<int>(type: "int", nullable: false),
-                    Punktualność = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Ratings", x => x.Id);
-                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
                 name: "Comments");
-
-            migrationBuilder.DropTable(
-                name: "Ratings");
 
             migrationBuilder.DropColumn(
                 name: "Description",
@@ -81,12 +59,6 @@ namespace Projekt.Data.Migrations
                 nullable: true,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)");
-
-            migrationBuilder.AddColumn<string>(
-                name: "DriverId",
-                table: "Drivers",
-                type: "nvarchar(max)",
-                nullable: true);
         }
     }
 }
